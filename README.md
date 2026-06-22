@@ -7,8 +7,6 @@ Package này là phần nộp Week 5, gồm hai phần chính:
 1. **Reporting & Analysis:** dùng dữ liệu ticket từ Week 4 để tạo báo cáo, phân tích pattern, đánh giá impact và đưa ra recommendation.
 2. **Automation Implementation:** thiết kế và implement workflow automation cho Scenario 1 - Login Issue theo hướng Operating Engineer.
 
-Mình giữ tên file, folder và code bằng tiếng Anh để dễ đọc trên GitHub. Nội dung các file `.md` được viết bằng tiếng Việt để dễ review và trình bày.
-
 ## Cấu trúc package
 
 Các file tài liệu chính được đặt ngay ở root để dễ mở và review. Những phần có nhiều file như automation source code, docs, tests, logs và evidence vẫn được giữ trong folder riêng.
