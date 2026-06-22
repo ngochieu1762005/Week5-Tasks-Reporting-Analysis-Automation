@@ -1,0 +1,14 @@
+{
+  "teacher01@example.com": {
+    "status": "active",
+    "name": "Teacher 01"
+  },
+  "old.employee@example.com": {
+    "status": "terminated",
+    "name": "Old Employee"
+  },
+  "unknown.user@example.com": {
+    "status": "unknown",
+    "name": "Unknown User"
+  }
+}
