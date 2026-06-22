@@ -1,4 +1,4 @@
-# Week 5 Submission - Reporting, Analysis & Automation Implementation
+# Week 5 Reporting, Analysis & Automation Implementation
 
 ## Tổng quan
 
@@ -20,7 +20,6 @@ week-5-submission-pro/
 ├── pattern-analysis.md
 ├── findings-recommendations.md
 ├── login-issue-problem-analysis.md
-├── final-presentation-outline.md
 ├── submission-checklist.md
 ├── login-issue-automation/
 │   ├── README.md
@@ -109,7 +108,7 @@ python src/run_scheduled_odoo.py
 evidence/screenshots/
 ```
 
-Các ảnh nên có:
+Các ảnh
 
 - Ticket list view 6 ticket
 - Ticket detail 00001 Login Issue
