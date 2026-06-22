@@ -1,64 +1,37 @@
-2026-06-22 18:23:07,818 INFO start ticket=00001
-2026-06-22 18:23:07,819 INFO ticket=00001 note=Automation detected pattern: Login Issue.
-2026-06-22 18:23:07,819 INFO ticket=00001 requester=teacher01@example.com employee_status=active
-2026-06-22 18:23:07,819 INFO ticket=00001 send_response_to=teacher01@example.com
-2026-06-22 18:23:07,819 INFO ticket=00001 note=Automation completed: employee is active and LMS account was reactivated.
-2026-06-22 18:23:07,819 INFO ticket=00001 tag=automation-processed
-2026-06-22 18:23:07,819 INFO ticket=00001 stage=Solved
-2026-06-22 18:23:07,819 INFO start ticket=00007
-2026-06-22 18:23:07,819 INFO ticket=00007 note=Automation detected pattern: Login Issue.
-2026-06-22 18:23:07,819 INFO ticket=00007 requester=old.employee@example.com employee_status=terminated
-2026-06-22 18:23:07,819 INFO ticket=00007 note=Manual review required: employee status is terminated. No account reactivation performed.
-2026-06-22 18:23:07,819 INFO ticket=00007 send_response_to=old.employee@example.com
-2026-06-22 18:23:07,819 INFO ticket=00007 tag=manual-review
-2026-06-22 18:23:07,819 INFO ticket=00007 stage=Manual Review
-2026-06-22 18:23:07,819 INFO start ticket=00008
-2026-06-22 18:23:07,819 INFO ticket=00008 note=Automation detected pattern: Login Issue.
-2026-06-22 18:23:07,819 INFO ticket=00008 requester=unknown.person@example.com employee_status=unknown
-2026-06-22 18:23:07,819 INFO ticket=00008 note=Manual review required: employee status is unknown or cannot be verified.
-2026-06-22 18:23:07,819 INFO ticket=00008 tag=manual-review
-2026-06-22 18:23:07,819 INFO ticket=00008 stage=Manual Review
-2026-06-22 18:23:07,819 INFO start ticket=00009
-2026-06-22 18:23:07,819 INFO ticket=00009 note=Automation skipped: ticket does not match Login Issue pattern.
-2026-06-22 18:23:07,819 INFO ticket=00009 tag=automation-skipped
-2026-06-22 18:23:07,819 INFO start ticket=00010
-2026-06-22 18:23:07,819 INFO ticket=00010 note=Automation detected pattern: Login Issue.
-2026-06-22 18:23:07,819 INFO ticket=00010 note=Manual review required: requester email is missing.
-2026-06-22 18:23:07,819 INFO ticket=00010 tag=manual-review
-2026-06-22 18:23:07,819 INFO ticket=00010 stage=Manual Review
-2026-06-22 18:23:07,819 INFO start ticket=00011
-2026-06-22 18:23:07,819 INFO ticket=00011 note=Manual review required: possible security/access risk detected.
-2026-06-22 18:23:07,819 INFO ticket=00011 tag=manual-review
-2026-06-22 18:23:07,819 INFO ticket=00011 stage=Manual Review
-2026-06-22 18:35:48,833 INFO start ticket=00001
-2026-06-22 18:35:48,833 INFO ticket=00001 note=Automation detected pattern: Login Issue.
-2026-06-22 18:35:48,833 INFO ticket=00001 requester=teacher01@example.com employee_status=active
-2026-06-22 18:35:48,833 INFO ticket=00001 send_response_to=teacher01@example.com
-2026-06-22 18:35:48,834 INFO ticket=00001 note=Automation completed: employee is active and LMS account was reactivated.
-2026-06-22 18:35:48,834 INFO ticket=00001 tag=automation-processed
-2026-06-22 18:35:48,834 INFO ticket=00001 stage=Solved
-2026-06-22 18:35:48,834 INFO start ticket=00007
-2026-06-22 18:35:48,834 INFO ticket=00007 note=Automation detected pattern: Login Issue.
-2026-06-22 18:35:48,834 INFO ticket=00007 requester=old.employee@example.com employee_status=terminated
-2026-06-22 18:35:48,834 INFO ticket=00007 note=Manual review required: employee status is terminated. No account reactivation performed.
-2026-06-22 18:35:48,834 INFO ticket=00007 send_response_to=old.employee@example.com
-2026-06-22 18:35:48,834 INFO ticket=00007 tag=manual-review
-2026-06-22 18:35:48,834 INFO ticket=00007 stage=Manual Review
-2026-06-22 18:35:48,834 INFO start ticket=00008
-2026-06-22 18:35:48,834 INFO ticket=00008 note=Automation detected pattern: Login Issue.
-2026-06-22 18:35:48,834 INFO ticket=00008 requester=unknown.person@example.com employee_status=unknown
-2026-06-22 18:35:48,834 INFO ticket=00008 note=Manual review required: employee status is unknown or cannot be verified.
-2026-06-22 18:35:48,834 INFO ticket=00008 tag=manual-review
-2026-06-22 18:35:48,834 INFO ticket=00008 stage=Manual Review
-2026-06-22 18:35:48,837 INFO start ticket=00009
-2026-06-22 18:35:48,837 INFO ticket=00009 note=Automation skipped: ticket does not match Login Issue pattern.
-2026-06-22 18:35:48,837 INFO ticket=00009 tag=automation-skipped
-2026-06-22 18:35:48,837 INFO start ticket=00010
-2026-06-22 18:35:48,837 INFO ticket=00010 note=Automation detected pattern: Login Issue.
-2026-06-22 18:35:48,837 INFO ticket=00010 note=Manual review required: requester email is missing.
-2026-06-22 18:35:48,837 INFO ticket=00010 tag=manual-review
-2026-06-22 18:35:48,837 INFO ticket=00010 stage=Manual Review
-2026-06-22 18:35:48,837 INFO start ticket=00011
-2026-06-22 18:35:48,837 INFO ticket=00011 note=Manual review required: possible security or access risk detected.
-2026-06-22 18:35:48,837 INFO ticket=00011 tag=manual-review
-2026-06-22 18:35:48,837 INFO ticket=00011 stage=Manual Review
+2026-06-22 19:52:01 INFO Start Login Issue Automation demo run
+2026-06-22 19:52:01 INFO Loaded HR demo data from data/hr_demo.json
+2026-06-22 19:52:01 INFO Processing ticket DEMO-001 requester=teacher01@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-001 detected_pattern=login_issue
+2026-06-22 19:52:01 INFO HR status check requester=teacher01@mindx.com status=active
+2026-06-22 19:52:01 INFO LMS account reactivated requester=teacher01@mindx.com
+2026-06-22 19:52:01 INFO Odoo note added ticket=DEMO-001 result=resolved_by_automation
+2026-06-22 19:52:01 INFO Odoo stage updated ticket=DEMO-001 stage=Solved
+2026-06-22 19:52:01 INFO Processing ticket DEMO-002 requester=terminated.teacher@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-002 detected_pattern=login_issue
+2026-06-22 19:52:01 INFO HR status check requester=terminated.teacher@mindx.com status=terminated
+2026-06-22 19:52:01 INFO Manual review required ticket=DEMO-002 reason=terminated_employee
+2026-06-22 19:52:01 INFO Odoo stage updated ticket=DEMO-002 stage=Manual Review
+2026-06-22 19:52:01 INFO Processing ticket DEMO-003 requester=unknown.user@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-003 detected_pattern=login_issue
+2026-06-22 19:52:01 INFO HR status check requester=unknown.user@mindx.com status=unknown
+2026-06-22 19:52:01 INFO Manual review required ticket=DEMO-003 reason=unknown_employee_status
+2026-06-22 19:52:01 INFO Odoo stage updated ticket=DEMO-003 stage=Manual Review
+2026-06-22 19:52:01 INFO Processing ticket DEMO-004 requester=locked.user@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-004 detected_pattern=login_issue
+2026-06-22 19:52:01 INFO HR status check requester=locked.user@mindx.com status=locked
+2026-06-22 19:52:01 INFO Manual review required ticket=DEMO-004 reason=non_active_status
+2026-06-22 19:52:01 INFO Odoo stage updated ticket=DEMO-004 stage=Manual Review
+2026-06-22 19:52:01 INFO Processing ticket DEMO-005 requester=suspended.user@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-005 detected_pattern=login_issue
+2026-06-22 19:52:01 INFO HR status check requester=suspended.user@mindx.com status=suspended
+2026-06-22 19:52:01 INFO Manual review required ticket=DEMO-005 reason=non_active_status
+2026-06-22 19:52:01 INFO Odoo stage updated ticket=DEMO-005 stage=Manual Review
+2026-06-22 19:52:01 INFO Processing ticket DEMO-006 requester=contractor01@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-006 detected_pattern=login_issue
+2026-06-22 19:52:01 INFO HR status check requester=contractor01@mindx.com status=contractor
+2026-06-22 19:52:01 INFO Manual review required ticket=DEMO-006 reason=non_active_status
+2026-06-22 19:52:01 INFO Odoo stage updated ticket=DEMO-006 stage=Manual Review
+2026-06-22 19:52:01 INFO Processing ticket DEMO-007 requester=teacher02@mindx.com
+2026-06-22 19:52:01 INFO Ticket DEMO-007 detected_pattern=not_login_issue
+2026-06-22 19:52:01 INFO Automation skipped ticket=DEMO-007 reason=not_login_issue
+2026-06-22 19:52:01 INFO Login Issue Automation demo run completed total=7 resolved=1 manual_review=5 skipped=1
