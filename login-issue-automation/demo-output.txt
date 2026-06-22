@@ -1,0 +1,42 @@
+===== Week 5 Login Issue Automation Demo =====
+
+Processing ticket 00001 - LMS Login Issue - Teacher cannot access account
+[Odoo Note] Ticket 00001: Automation detected pattern: Login Issue.
+[Response] To teacher01@example.com: Hello,
+[Odoo Note] Ticket 00001: Automation completed: employee is active and LMS account was reactivated.
+[Odoo Tag] Ticket 00001: automation-processed
+[Odoo Stage] Ticket 00001: Solved
+Result: AutomationResult(ticket_id='00001', result='resolved_by_automation', reason=None, employee_status='active', action='lms_account_reactivated', message_sent=True, odoo_updated=True, details={})
+
+Processing ticket 00007 - LMS Login Issue - Old employee cannot access account
+[Odoo Note] Ticket 00007: Automation detected pattern: Login Issue.
+[Odoo Note] Ticket 00007: Manual review required: employee status is terminated. No account reactivation performed.
+[Response] To old.employee@example.com: Hello,
+[Odoo Tag] Ticket 00007: manual-review
+[Odoo Stage] Ticket 00007: Manual Review
+Result: AutomationResult(ticket_id='00007', result='manual_review_required', reason='terminated_employee', employee_status='terminated', action=None, message_sent=True, odoo_updated=False, details={})
+
+Processing ticket 00008 - LMS Login Issue - Unknown user
+[Odoo Note] Ticket 00008: Automation detected pattern: Login Issue.
+[Odoo Note] Ticket 00008: Manual review required: employee status is unknown or cannot be verified.
+[Odoo Tag] Ticket 00008: manual-review
+[Odoo Stage] Ticket 00008: Manual Review
+Result: AutomationResult(ticket_id='00008', result='manual_review_required', reason='unknown_employee_status', employee_status='unknown', action=None, message_sent=False, odoo_updated=False, details={})
+
+Processing ticket 00009 - LMS Performance Issue
+[Odoo Note] Ticket 00009: Automation skipped: ticket does not match Login Issue pattern.
+[Odoo Tag] Ticket 00009: automation-skipped
+Result: AutomationResult(ticket_id='00009', result='skipped_not_login_issue', reason=None, employee_status=None, action='skip', message_sent=False, odoo_updated=False, details={})
+
+Processing ticket 00010 - Cannot login to LMS
+[Odoo Note] Ticket 00010: Automation detected pattern: Login Issue.
+[Odoo Note] Ticket 00010: Manual review required: requester email is missing.
+[Odoo Tag] Ticket 00010: manual-review
+[Odoo Stage] Ticket 00010: Manual Review
+Result: AutomationResult(ticket_id='00010', result='manual_review_required', reason='missing_requester_email', employee_status=None, action=None, message_sent=False, odoo_updated=False, details={})
+
+Processing ticket 00011 - LMS account may be hacked
+[Odoo Note] Ticket 00011: Manual review required: possible security or access risk detected.
+[Odoo Tag] Ticket 00011: manual-review
+[Odoo Stage] Ticket 00011: Manual Review
+Result: AutomationResult(ticket_id='00011', result='manual_review_required', reason='security_risk', employee_status=None, action=None, message_sent=False, odoo_updated=False, details={})
