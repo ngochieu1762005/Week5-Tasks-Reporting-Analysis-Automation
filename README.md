@@ -1,71 +1,88 @@
 # Week 5 Submission - Reporting, Analysis & Automation Implementation
 
+## Tổng quan
 
-## Nội dung package
+Package này là phần nộp Week 5, gồm hai phần chính:
 
-Package này bao gồm đầy đủ Week 5 từ đầu đến cuối:
+1. **Reporting & Analysis:** dùng dữ liệu ticket từ Week 4 để tạo báo cáo, phân tích pattern, đánh giá impact và đưa ra recommendation.
+2. **Automation Implementation:** thiết kế và implement workflow automation cho Scenario 1 - Login Issue theo hướng Operating Engineer.
 
-1. Chuẩn bị dữ liệu ticket Week 4
-2. Tạo báo cáo Odoo
-3. Phân tích pattern và impact
-4. Findings & recommendations
-5. Phân tích Login Issue
-6. Thiết kế + implement automation có Odoo API/Webhook
-7. Test workflow automation
-8. Documentation + KB + operation guide
-9. Final presentation outline
-10. Submission checklist
+Mình giữ tên file, folder và code bằng tiếng Anh để dễ đọc trên GitHub. Nội dung các file `.md` được viết bằng tiếng Việt để dễ review và trình bày.
 
-## Cấu trúc folder
+## Cấu trúc package
+
+Các file tài liệu chính được đặt ngay ở root để dễ mở và review. Những phần có nhiều file như automation source code, docs, tests, logs và evidence vẫn được giữ trong folder riêng.
 
 ```text
 week-5-submission-pro/
-├── overview/
-├── ticket-data-summary/
-├── odoo-reports/
-├── pattern-analysis/
-├── findings-recommendations/
-├── login-issue-problem-analysis/
+├── README.md
+├── overview.md
+├── ticket-data-summary.md
+├── odoo-reports.md
+├── pattern-analysis.md
+├── findings-recommendations.md
+├── login-issue-problem-analysis.md
+├── final-presentation-outline.md
+├── submission-checklist.md
 ├── login-issue-automation/
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── demo-output.txt
+│   ├── test-output.txt
 │   ├── src/
 │   ├── config/
 │   ├── data/
 │   ├── docs/
 │   ├── tests/
 │   └── logs/
-├── presentation/
-├── evidence/screenshots/
-└── submission-checklist/
+└── evidence/
+    └── screenshots/
 ```
 
-## Điểm nổi bật 
+## Nội dung chính
 
-- Có **Odoo API client thật bằng XML-RPC**.
-- Có **webhook server** để nhận event từ Odoo/external automation.
-- Có **scheduled job runner** để chạy định kỳ.
-- Có **mock mode** để chạy demo không cần Odoo thật.
-- Có **unit test** và test result.
-- Có **action plan giảm ticket volume**.
-- Có **monitoring metrics sau automation**.
-- Toàn bộ tài liệu viết bằng **tiếng Việt**.
+| Phần | File / Folder | Mục đích |
+|---|---|---|
+| Overview | `overview.md` | Tóm tắt mục tiêu và cách tiếp cận Week 5 |
+| Ticket data | `ticket-data-summary.md` | Tổng hợp 6 ticket Week 4 dùng làm dữ liệu phân tích |
+| Odoo reports | `odoo-reports.md` | Báo cáo ticket summary, team performance, category và trend |
+| Pattern analysis | `pattern-analysis.md` | Phân tích issue lặp lại, impact và root cause ban đầu |
+| Findings | `findings-recommendations.md` | Findings, recommendations và action plan giảm ticket volume |
+| Problem analysis | `login-issue-problem-analysis.md` | Giải thích vì sao chọn Login Issue để automation |
+| Automation | `login-issue-automation/` | Code, API/Webhook, tests, docs và log cho automation |
+| Presentation | `final-presentation-outline.md` | Outline trình bày cuối Week 5 |
+| Checklist | `submission-checklist.md` | Checklist tự kiểm tra trước khi nộp |
+| Evidence | `evidence/screenshots/` | Ảnh Odoo ticket list và ticket details |
+
+## Điểm nổi bật
+
+- Có phân tích dữ liệu ticket từ Week 4 thay vì chỉ làm automation.
+- Có Odoo reports, pattern analysis, impact analysis và action plan.
+- Có automation workflow cho Scenario 1 - Login Issue.
+- Có Odoo API client bằng XML-RPC.
+- Có webhook server để mô phỏng hướng tích hợp event-based.
+- Có scheduled runner để mô phỏng hướng chạy định kỳ.
+- Có mock mode để chạy demo không cần Odoo thật.
+- Có unit test, demo output, test output và operation guide.
+- Có KB article cho Login Issue để support có thể xử lý thủ công khi cần.
 
 ## Cách chạy demo automation
 
 ```bash
-cd 06-login-issue-automation
+cd login-issue-automation
 python src/automation_demo.py
 ```
 
 ## Cách chạy test
 
 ```bash
-cd 06-login-issue-automation
+cd login-issue-automation
 python -m unittest discover -s tests
 ```
 
-## Cách chạy scheduled job với Odoo API thật
+## Cách chạy với Odoo API thật
 
-1. Copy file config:
+1. Copy file config mẫu:
 
 ```bash
 cp config/config.example.env config/.env
@@ -74,24 +91,24 @@ cp config/config.example.env config/.env
 2. Điền thông tin Odoo:
 
 ```text
-ODOO_URL=
-ODOO_DB=
-ODOO_USERNAME=
-ODOO_API_KEY=
+ODOO_URL=https://your-odoo-domain.com
+ODOO_DB=your_database
+ODOO_USERNAME=your_email@example.com
+ODOO_API_KEY=your_api_key
 ```
 
-3. Chạy:
+3. Chạy scheduled job:
 
 ```bash
 python src/run_scheduled_odoo.py
 ```
 
-## Evidence cần bổ sung
+## Evidence
 
-Ảnh Odoo của bạn nên để vào:
+Ảnh Odoo để trong:
 
 ```text
-08-evidence/screenshots/
+evidence/screenshots/
 ```
 
 Các ảnh nên có:
@@ -108,9 +125,10 @@ Các ảnh nên có:
 
 | Acceptance Criteria | File chứng minh |
 |---|---|
-| Recurring ticket patterns are identified | `03-pattern-analysis/week-5-pattern-analysis.md` |
-| Findings and recommendations documented | `04-findings-recommendations/week-5-findings-recommendations.md` |
-| Automation workflow implemented | `06-login-issue-automation/src/automation_demo.py` |
-| Auto-analyzes tickets, checks HR, processes accordingly | `06-login-issue-automation/src/login_automation_service.py` |
-| Integrates with Odoo ticket system webhook/API | `06-login-issue-automation/src/odoo_api_client.py`, `06-login-issue-automation/src/webhook_server.py`, `06-login-issue-automation/docs/api-integration.md` |
-| Action plan to reduce ticket volume | `04-findings-recommendations/week-5-findings-recommendations.md` |
+| Recurring ticket patterns are identified | `pattern-analysis.md` |
+| Findings and recommendations with evidence are documented | `findings-recommendations.md` |
+| Automation workflow implemented for Scenario 1 | `login-issue-automation/src/login_automation_service.py` |
+| Workflow auto-analyzes tickets, checks HR system, and processes accordingly | `login-issue-automation/src/detector.py`, `login-issue-automation/src/hr_client.py`, `login-issue-automation/src/login_automation_service.py` |
+| Workflow integrates with Odoo ticket system webhook/API | `login-issue-automation/src/odoo_api_client.py`, `login-issue-automation/src/webhook_server.py`, `login-issue-automation/docs/api-integration.md` |
+| Action plan to reduce ticket volume is developed | `findings-recommendations.md` |
+
