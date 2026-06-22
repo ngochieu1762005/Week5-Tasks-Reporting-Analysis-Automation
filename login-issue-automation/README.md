@@ -61,3 +61,14 @@ POST http://localhost:8080/webhook/odoo-ticket
 | `src/hr_client.py` | HR check demo/API abstraction |
 | `src/lms_client.py` | LMS reactivation demo/API abstraction |
 | `docs/api-integration.md` | Giải thích API/Webhook integration |
+
+## Demo HR data
+
+File `data/hr_demo.json` dùng email nội bộ dạng `@mindx.com` và có nhiều trạng thái HR để test safety boundary.
+
+Policy trong demo:
+
+```text
+active → automation được phép reactivate LMS account
+terminated / unknown / inactive / locked / suspended / on_leave / contractor / probation / resigned → manual review
+```

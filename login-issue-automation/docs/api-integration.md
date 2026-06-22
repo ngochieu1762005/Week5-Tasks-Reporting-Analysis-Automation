@@ -92,7 +92,7 @@ Payload mẫu:
   "ticket_id": "00001",
   "title": "LMS Login Issue - Teacher cannot access account",
   "description": "Teacher cannot login to LMS. Account seems disabled.",
-  "requester_email": "teacher01@example.com",
+  "requester_email": "teacher01@mindx.com",
   "priority": "1 star",
   "stage": "New",
   "tags": ["lms", "login"]

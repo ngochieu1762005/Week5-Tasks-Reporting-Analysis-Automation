@@ -14,25 +14,44 @@ class TestLoginAutomation(unittest.TestCase):
         self.service = LoginAutomationService(HRClient(data_path="data/hr_demo.json"), LMSClient(), dry_run=True)
 
     def test_active_employee_resolved(self):
-        ticket = Ticket("00001", "Cannot login to LMS", "Account disabled", "teacher01@example.com")
+        ticket = Ticket("00001", "Cannot login to LMS", "Account disabled", "teacher01@mindx.com")
         result = self.service.process(ticket)
         self.assertEqual(result.result, "resolved_by_automation")
         self.assertEqual(result.employee_status, "active")
 
     def test_terminated_employee_manual_review(self):
-        ticket = Ticket("00007", "Cannot login to LMS", "Account disabled", "old.employee@example.com")
+        ticket = Ticket("00007", "Cannot login to LMS", "Account disabled", "terminated.teacher@mindx.com")
         result = self.service.process(ticket)
         self.assertEqual(result.result, "manual_review_required")
         self.assertEqual(result.reason, "terminated_employee")
 
     def test_unknown_employee_manual_review(self):
-        ticket = Ticket("00008", "Cannot login to LMS", "Account disabled", "someone@example.com")
+        ticket = Ticket("00008", "Cannot login to LMS", "Account disabled", "unknown.user@mindx.com")
         result = self.service.process(ticket)
         self.assertEqual(result.result, "manual_review_required")
         self.assertEqual(result.reason, "unknown_employee_status")
 
+    def test_locked_employee_manual_review(self):
+        ticket = Ticket("00012", "Cannot login to LMS", "Account locked", "locked.user@mindx.com")
+        result = self.service.process(ticket)
+        self.assertEqual(result.result, "manual_review_required")
+        self.assertEqual(result.employee_status, "locked")
+        self.assertEqual(result.reason, "unknown_employee_status")
+
+    def test_suspended_employee_manual_review(self):
+        ticket = Ticket("00013", "Cannot login to LMS", "Account disabled", "suspended.user@mindx.com")
+        result = self.service.process(ticket)
+        self.assertEqual(result.result, "manual_review_required")
+        self.assertEqual(result.employee_status, "suspended")
+
+    def test_contractor_employee_manual_review(self):
+        ticket = Ticket("00014", "Cannot login to LMS", "Account disabled", "contractor01@mindx.com")
+        result = self.service.process(ticket)
+        self.assertEqual(result.result, "manual_review_required")
+        self.assertEqual(result.employee_status, "contractor")
+
     def test_non_login_skipped(self):
-        ticket = Ticket("00009", "LMS Performance Issue", "System slow", "teacher01@example.com")
+        ticket = Ticket("00009", "LMS Performance Issue", "System slow", "teacher02@mindx.com")
         result = self.service.process(ticket)
         self.assertEqual(result.result, "skipped_not_login_issue")
 
@@ -43,7 +62,7 @@ class TestLoginAutomation(unittest.TestCase):
         self.assertEqual(result.reason, "missing_requester_email")
 
     def test_security_risk_manual_review(self):
-        ticket = Ticket("00011", "LMS account hacked", "My account was hacked", "teacher01@example.com")
+        ticket = Ticket("00011", "LMS account hacked", "My account was hacked", "teacher01@mindx.com")
         result = self.service.process(ticket)
         self.assertEqual(result.result, "manual_review_required")
         self.assertEqual(result.reason, "security_risk")

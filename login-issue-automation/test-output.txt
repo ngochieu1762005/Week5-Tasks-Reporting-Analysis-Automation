@@ -1,13 +1,21 @@
-......
+.........
 ----------------------------------------------------------------------
-Ran 6 tests in 0.001s
+Ran 9 tests in 0.002s
 
 OK
 [Odoo Note] Ticket 00001: Automation detected pattern: Login Issue.
-[Response] To teacher01@example.com: Hello,
+[Response] To teacher01@mindx.com: Hello,
 [Odoo Note] Ticket 00001: Automation completed: employee is active and LMS account was reactivated.
 [Odoo Tag] Ticket 00001: automation-processed
 [Odoo Stage] Ticket 00001: Solved
+[Odoo Note] Ticket 00014: Automation detected pattern: Login Issue.
+[Odoo Note] Ticket 00014: Manual review required: employee status is unknown or cannot be verified.
+[Odoo Tag] Ticket 00014: manual-review
+[Odoo Stage] Ticket 00014: Manual Review
+[Odoo Note] Ticket 00012: Automation detected pattern: Login Issue.
+[Odoo Note] Ticket 00012: Manual review required: employee status is unknown or cannot be verified.
+[Odoo Tag] Ticket 00012: manual-review
+[Odoo Stage] Ticket 00012: Manual Review
 [Odoo Note] Ticket 00010: Automation detected pattern: Login Issue.
 [Odoo Note] Ticket 00010: Manual review required: requester email is missing.
 [Odoo Tag] Ticket 00010: manual-review
@@ -17,9 +25,13 @@ OK
 [Odoo Note] Ticket 00011: Manual review required: possible security or access risk detected.
 [Odoo Tag] Ticket 00011: manual-review
 [Odoo Stage] Ticket 00011: Manual Review
+[Odoo Note] Ticket 00013: Automation detected pattern: Login Issue.
+[Odoo Note] Ticket 00013: Manual review required: employee status is unknown or cannot be verified.
+[Odoo Tag] Ticket 00013: manual-review
+[Odoo Stage] Ticket 00013: Manual Review
 [Odoo Note] Ticket 00007: Automation detected pattern: Login Issue.
 [Odoo Note] Ticket 00007: Manual review required: employee status is terminated. No account reactivation performed.
-[Response] To old.employee@example.com: Hello,
+[Response] To terminated.teacher@mindx.com: Hello,
 [Odoo Tag] Ticket 00007: manual-review
 [Odoo Stage] Ticket 00007: Manual Review
 [Odoo Note] Ticket 00008: Automation detected pattern: Login Issue.

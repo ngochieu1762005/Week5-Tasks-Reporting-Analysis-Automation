@@ -1,14 +1,80 @@
 {
-  "teacher01@example.com": {
+  "teacher01@mindx.com": {
     "status": "active",
-    "name": "Teacher 01"
+    "name": "Teacher 01",
+    "role": "Teacher",
+    "department": "Academic"
   },
-  "old.employee@example.com": {
+  "teacher02@mindx.com": {
+    "status": "active",
+    "name": "Teacher 02",
+    "role": "Teacher",
+    "department": "Academic"
+  },
+  "mentor01@mindx.com": {
+    "status": "active",
+    "name": "Mentor 01",
+    "role": "Mentor",
+    "department": "Academic"
+  },
+  "support01@mindx.com": {
+    "status": "active",
+    "name": "Support 01",
+    "role": "Support",
+    "department": "Operations"
+  },
+  "inactive.teacher@mindx.com": {
+    "status": "inactive",
+    "name": "Inactive Teacher",
+    "role": "Teacher",
+    "department": "Academic"
+  },
+  "locked.user@mindx.com": {
+    "status": "locked",
+    "name": "Locked User",
+    "role": "Staff",
+    "department": "Operations"
+  },
+  "suspended.user@mindx.com": {
+    "status": "suspended",
+    "name": "Suspended User",
+    "role": "Staff",
+    "department": "Operations"
+  },
+  "onleave.teacher@mindx.com": {
+    "status": "on_leave",
+    "name": "On Leave Teacher",
+    "role": "Teacher",
+    "department": "Academic"
+  },
+  "contractor01@mindx.com": {
+    "status": "contractor",
+    "name": "Contractor 01",
+    "role": "Contractor",
+    "department": "IT"
+  },
+  "probation.staff@mindx.com": {
+    "status": "probation",
+    "name": "Probation Staff",
+    "role": "Staff",
+    "department": "Operations"
+  },
+  "terminated.teacher@mindx.com": {
     "status": "terminated",
-    "name": "Old Employee"
+    "name": "Terminated Teacher",
+    "role": "Teacher",
+    "department": "Academic"
   },
-  "unknown.user@example.com": {
+  "resigned.staff@mindx.com": {
+    "status": "resigned",
+    "name": "Resigned Staff",
+    "role": "Staff",
+    "department": "Operations"
+  },
+  "unknown.user@mindx.com": {
     "status": "unknown",
-    "name": "Unknown User"
+    "name": "Unknown User",
+    "role": "Unknown",
+    "department": "Unknown"
   }
 }
