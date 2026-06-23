@@ -53,14 +53,11 @@ Các số liệu trong bài như tổng số ticket, stage distribution, priorit
 ```text
 .
 ├── README.md
-├── overview.md
 ├── ticket-data-summary.md
 ├── odoo-reports.md
 ├── pattern-analysis.md
 ├── findings-recommendations.md
 ├── login-issue-problem-analysis.md
-├── final-presentation-outline.md
-├── submission-checklist.md
 ├── login-issue-automation/
 │   ├── README.md
 │   ├── requirements.txt
