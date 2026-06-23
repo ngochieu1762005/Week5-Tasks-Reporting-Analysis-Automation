@@ -324,8 +324,6 @@ Các test case chính:
 
 ## Kết quả chính
 
-Bài nộp này đã hoàn thành các phần:
-
 * Reporting từ file `doc/plans/data/sample.xlsx`.
 * Pattern analysis và impact analysis.
 * Findings, recommendations và action plan.
