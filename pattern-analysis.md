@@ -2,7 +2,7 @@
 
 ## Mục tiêu
 
-Mục tiêu của phần này là nhìn vào dữ liệu ticket thật từ Odoo để tìm ra các nhóm vấn đề lặp lại. Em không chỉ nhìn từng ticket riêng lẻ, mà nhóm ticket theo tag, nội dung subject và mức độ ảnh hưởng tới vận hành.
+Mục tiêu của phần này là nhìn vào dữ liệu ticket thật từ Odoo để tìm ra các nhóm vấn đề lặp lại. Không chỉ nhìn từng ticket riêng lẻ, mà nhóm ticket theo tag, nội dung subject và mức độ ảnh hưởng tới vận hành.
 
 Dataset dùng cho phần này gồm 131 ticket từ `sample.xlsx`.
 
@@ -64,7 +64,7 @@ CRM và LMS là hai hệ thống cần ưu tiên nhất vì số lượng ticket
 
 ## 5. Chọn issue phù hợp để automation
 
-Dựa trên dữ liệu thật, em vẫn chọn hướng **Login / Account Access Automation** vì nhóm access/account xuất hiện nhiều dạng khác nhau:
+Dựa trên dữ liệu thật, chọn hướng **Login / Account Access Automation** vì nhóm access/account xuất hiện nhiều dạng khác nhau:
 
 - Cấp lại tài khoản Ecount
 - Cấp mail Outlook
