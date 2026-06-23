@@ -1,116 +1,91 @@
-# Week 5 - Báo cáo Odoo
+# Odoo Reports
 
-## 1. Data Source
+## Nguồn dữ liệu
 
-Các báo cáo bên dưới dựa trên 6 ticket Week 4 trong Odoo Helpdesk. Tất cả ticket đã được xử lý xong và chuyển sang **Solved**.
+Báo cáo này sử dụng dữ liệu từ file export Odoo `sample.xlsx`, gồm 131 ticket Helpdesk. Mục tiêu là biến dữ liệu ticket thô thành các báo cáo dễ đọc để phục vụ phân tích pattern và đề xuất cải tiến.
 
----
+## 1. Ticket Summary Report
 
-## 2. Daily Ticket Summary Report
-
-### Mục đích
-
-Tổng hợp toàn bộ ticket đã xử lý trong Week 4.
-
-| ID | Tên ticket | Mức ưu tiên | Người xử lý | Trạng thái |
-|---|---|---|---|---|
-| 00001 | LMS Login Issue - Teacher cannot access account | 1 sao | Nguyễn Ngọc Hiếu | Solved |
-| 00002 | LMS Performance Issue - WEB101-HN-2024 Class | 2 sao | Nguyễn Ngọc Hiếu | Solved |
-| 00003 | Critical LMS Submission Bug - Final Exam Upload Failed | 3 sao | Nguyễn Ngọc Hiếu | Solved |
-| 00004 | Feature Request - Weekly PDF Report for Parents | 1 sao | Nguyễn Ngọc Hiếu | Solved |
-| 00005 | LMS Video Playback Issue - JS Advanced Lesson 3 | 2 sao | Nguyễn Ngọc Hiếu | Solved |
-| 00006 | Fixed Deadline Request - Enrollment Report Needed Before 09:00 | 2 sao | Nguyễn Ngọc Hiếu | Solved |
-
-### Summary
-
-| Chỉ số | Giá trị |
+| Metric | Value |
 |---|---:|
-| Tổng số ticket | 6 |
-| Ticket đã xử lý xong | 6 |
-| Ticket đang mở / đang xử lý | 0 |
-| Tỷ lệ hoàn thành | 100% |
-
----
-
-## 3. Team Performance Report
-
-| Người xử lý | Tổng số ticket | Ticket đã Solved | Tỷ lệ hoàn thành | Workload |
-|---|---:|---:|---:|---:|
-| Nguyễn Ngọc Hiếu | 6 | 6 | 100% | 100% |
+| Total tickets | 131 |
+| New | 6 |
+| First Response Sent | 17 |
+| In Progress | 5 |
+| Resolved | 91 |
+| Cancelled | 12 |
 
 ### Nhận xét
 
-Toàn bộ ticket training được assigned cho một trainee. Report này chứng minh khả năng quản lý workflow, cập nhật ticket và hoàn thành toàn bộ scenario.
+Có 91 ticket đã được xử lý xong, chiếm phần lớn dữ liệu. Nhóm còn cần chú ý là 28 ticket đang ở `New`, `First Response Sent` hoặc `In Progress`. Nhóm này phản ánh backlog/đang xử lý tại thời điểm export.
 
----
-
-## 4. Category Analysis Report
-
-### High-level category
-
-| Nhóm vấn đề | Số lượng | Tỷ lệ | Ticket liên quan |
-|---|---:|---:|---|
-| LMS Technical Issues | 4 | 66.7% | Login, Performance, Submission Bug, Video Playback |
-| Reporting / Business Requests | 2 | 33.3% | Weekly PDF Report, Enrollment Report |
-
-### Detailed category
-
-| Category | Số lượng | Tỷ lệ |
-|---|---:|---:|
-| Login / Account | 1 | 16.7% |
-| Performance / LMS | 1 | 16.7% |
-| Submission Bug / LMS | 1 | 16.7% |
-| Video Playback / CDN | 1 | 16.7% |
-| Feature Request / Report | 1 | 16.7% |
-| Fixed Deadline Report | 1 | 16.7% |
-
----
-
-## 5. Ticket Volume Trends
-
-### By Stage
-
-| Stage | Ticket Count | Percentage |
-|---|---:|---:|
-| Solved | 6 | 100% |
-| New / In Progress / On Hold | 0 | 0% |
-
-### By Priority
+## 2. Priority Report
 
 | Priority | Ticket Count | Percentage |
 |---|---:|---:|
-| 3 sao | 1 | 16.7% |
-| 2 sao | 3 | 50.0% |
-| 1 sao | 2 | 33.3% |
-
-### By Class of Service
-
-| Class of Service | Ticket Count | Percentage |
-|---|---:|---:|
-| Standard | 2 | 33.3% |
-| Priority | 2 | 33.3% |
-| Expedite | 1 | 16.7% |
-| Fixed Deadline | 1 | 16.7% |
-
----
-
-## 6. Response / Resolution Time Note
-
-| Metric | Value | Note |
-|---|---|---|
-| First response time | Not available | Demo Odoo environment did not automatically measure this metric |
-| Resolution time | Not available | Training tickets were manually completed and moved to Solved |
-| Completion status | 6/6 Solved | Used as primary operational completion metric |
+| Urgent | 40 | 30.5% |
+| High priority | 42 | 32.1% |
+| Medium priority | 9 | 6.9% |
+| Low priority | 40 | 30.5% |
 
 ### Nhận xét
 
-Trong production, response time và resolution time nên được đo để đánh giá SLA. Trong môi trường training, các chỉ số chính là ticket status, priority, class of service, category và users affected.
+Số lượng `Urgent` và `High priority` khá cao. Tổng hai nhóm này là 82 ticket, chiếm 62.6% tổng dataset. Điều này cho thấy team support cần có quy trình ưu tiên rõ ràng để tránh các ticket quan trọng bị trôi.
 
----
+## 3. Category / Tag Analysis
 
-## 7. Initial Findings
+| Tag / Category | Ticket Count |
+|---|---:|
+| CRM | 25 |
+| LMS | 20 |
+| TMS | 9 |
+| User responded | 6 |
+| Awaiting information | 5 |
+| Các vấn đề về mail | 5 |
+| Bug | 5 |
+| enroll HV | 4 |
+| Điểm thưởng | 3 |
+| Xspace | 3 |
+| Denise | 3 |
+| Tài khoản Denise - HV không đăng nhập được | 3 |
+| E-contract | 3 |
 
-- 6/6 ticket đã được xử lý xong.
-- LMS Technical Issues chiếm tỷ lệ cao nhất: 4/6 ticket.
-- Ticket impact cao nhất là Critical LMS Submission Bug với 50+ users affected.
-- Login Issue là automation candidate tốt vì workflow rõ ràng và có thể xử lý bằng rule.
+### Nhận xét
+
+CRM và LMS là hai nhóm lớn nhất trong export. Đây là hai hệ thống có nhiều ticket vận hành nhất, nên cũng là hai khu vực nên ưu tiên monitoring, chuẩn hóa quy trình xử lý và tìm cơ hội automation.
+
+## 4. System-focused Report
+
+| Nhóm hệ thống | Số lượng ticket |
+|---|---:|
+| CRM | 25 |
+| LMS | 20 |
+| TMS | 9 |
+| Xspace | 3 |
+| Denise | 3 |
+| E-contract | 3 |
+| E-learning | 1 |
+| Khác / không có tag hệ thống rõ ràng | 67 |
+
+### Nhận xét
+
+Không phải ticket nào cũng có tag hệ thống rõ ràng, nhưng trong các tag có thể đọc được thì CRM và LMS vẫn nổi bật nhất. Một điểm cần cải thiện là chuẩn hóa tag khi tạo ticket để report về sau chính xác hơn.
+
+## 5. Response / Resolution Time
+
+File export hiện tại không có field thời gian phản hồi hoặc thời gian xử lý chi tiết. Vì vậy, trong báo cáo này em dùng trạng thái ticket, priority và tag/category làm chỉ số chính.
+
+Nếu triển khai tiếp, nên bổ sung các field sau vào export/report:
+
+- Created date
+- First response date
+- Resolved date
+- SLA deadline
+- SLA status
+- Assigned owner
+
+Các field này sẽ giúp tính được response time, resolution time và SLA compliance chính xác hơn.
+
+## Kết luận report
+
+Từ dữ liệu export, có thể thấy workload chính tập trung vào CRM, LMS, TMS và các vấn đề account/mail. Bước tiếp theo là phân tích pattern để chọn ra nhóm vấn đề có tính lặp lại và có thể giảm tải bằng automation hoặc cải tiến quy trình.

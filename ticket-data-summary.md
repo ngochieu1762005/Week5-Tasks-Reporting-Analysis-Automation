@@ -1,37 +1,67 @@
-# Week 4 Ticket Data Summary
+# Ticket Data Summary
 
-## 1. Nguồn dữ liệu
+## Nguồn dữ liệu
 
-Dữ liệu được lấy từ 6 ticket thực hành Week 4 trong Odoo Helpdesk. Các ticket đã được xử lý và kéo sang trạng thái **Solved**.
+File này được tổng hợp từ dữ liệu export Odoo trong `sample.xlsx`. Khác với bản demo ban đầu chỉ dùng 6 ticket practice, dữ liệu này có **131 ticket** từ hệ thống Helpdesk, nên phần phân tích bên dưới phản ánh sát thực tế hơn.
 
-Evidence sử dụng:
+Trong file export, ticket được nhóm theo các trạng thái chính:
 
-- Screenshot danh sách ticket trong Odoo
-- Screenshot chi tiết từng ticket
-- Ticket ID, title, priority, assignee, stage
-
-## 2. Danh sách ticket
-
-| ID | Ticket Title | Category | Class of Service | Priority | Users Affected | Assigned To | Stage |
-|---|---|---|---|---|---:|---|---|
-| 00001 | LMS Login Issue - Teacher cannot access account | Login / Account | Standard | 1 sao | 1 | Nguyễn Ngọc Hiếu | Solved |
-| 00002 | LMS Performance Issue - WEB101-HN-2024 Class | Performance / LMS | Priority | 2 sao | 15 | Nguyễn Ngọc Hiếu | Solved |
-| 00003 | Critical LMS Submission Bug - Final Exam Upload Failed | Submission Bug / LMS | Expedite | 3 sao | 50+ | Nguyễn Ngọc Hiếu | Solved |
-| 00004 | Feature Request - Weekly PDF Report for Parents | Feature Request / Report | Standard | 1 sao | N/A | Nguyễn Ngọc Hiếu | Solved |
-| 00005 | LMS Video Playback Issue - JS Advanced Lesson 3 | Video Playback / CDN | Priority | 2 sao | 12 | Nguyễn Ngọc Hiếu | Solved |
-| 00006 | Fixed Deadline Request - Enrollment Report Needed Before 09:00 | Report / Enrollment | Fixed Deadline | 2 sao | N/A | Nguyễn Ngọc Hiếu | Solved |
-
-## 3. Summary
-
-| Metric | Value |
+| Trạng thái trong export | Số lượng ticket |
 |---|---:|
-| Total tickets | 6 |
-| Solved tickets | 6 |
-| Open / In Progress tickets | 0 |
-| Completion rate | 100% |
-| LMS technical tickets | 4 |
-| Reporting/business tickets | 2 |
+| New | 6 |
+| First Response Sent | 17 |
+| In Progress | 5 |
+| Resolved | 91 |
+| Cancelled | 12 |
+| **Tổng cộng** | **131** |
 
-## 4. Limitation
+## Nhận xét nhanh
 
-Vì đây là môi trường training/demo, response time và resolution time không được đo tự động trong Odoo. Các báo cáo sẽ dùng trạng thái ticket, priority, class of service, category và users affected làm dữ liệu phân tích chính.
+Phần lớn ticket trong export đã được xử lý xong, với 91 ticket ở trạng thái `Resolved`. Tuy nhiên vẫn còn một nhóm ticket đang ở các trạng thái cần theo dõi như `New`, `First Response Sent` và `In Progress`. Đây là nhóm phù hợp để dùng cho việc phân tích workload và tìm các pattern vận hành.
+
+## Phân bổ theo mức ưu tiên
+
+| Priority | Số lượng | Tỷ lệ |
+|---|---:|---:|
+| Urgent | 40 | 30.5% |
+| High priority | 42 | 32.1% |
+| Medium priority | 9 | 6.9% |
+| Low priority | 40 | 30.5% |
+| **Tổng cộng** | **131** | **100%** |
+
+## Nhận xét về priority
+
+Nhóm `Urgent` và `High priority` chiếm tổng cộng 82/131 ticket, tương đương khoảng 62.6%. Điều này cho thấy workload của team support không chỉ là các request nhỏ lẻ, mà có khá nhiều ticket cần xử lý nhanh hoặc có mức ảnh hưởng cao.
+
+## Phân bổ theo tag chính
+
+| Tag / Nhóm vấn đề | Số lượng ticket |
+|---|---:|
+| CRM | 25 |
+| LMS | 20 |
+| TMS | 9 |
+| User responded | 6 |
+| Awaiting information | 5 |
+| Các vấn đề về mail | 5 |
+| Bug | 5 |
+| enroll HV | 4 |
+| Điểm thưởng | 3 |
+| Xspace | 3 |
+| Denise | 3 |
+| Tài khoản Denise - HV không đăng nhập được | 3 |
+| E-contract | 3 |
+
+## Một số ticket tiêu biểu
+
+| Ticket ID | Subject | Tag chính | Priority | Trạng thái export |
+|---|---|---|---|---|
+| 325 | MINDX ĐÀ NẴNG - HỖ TRỢ KIỂM TRA ĐỐI CHIẾU SỐ LƯỢNG ĐỔI QUÀ TRÊN DENISE | E-learning | High priority | New |
+| 287 | KHÔNG TẠO MÃ QR THANH TOÁN ĐƯỢC | CRM | High priority | New |
+| 296 | SỐ LƯỢNG GIỮA 2 HỆ THỐNG ECOUNT VÀ DENISE KHÔNG THỐNG NHẤT ĐỂ HV đổi quà | LMS | Low priority | New |
+| 308 | XIN CẤP LẠI TÀI KHOẢN ECOUNT | User responded | Urgent | First Response Sent |
+| 288 | NHỜ TEAM TECH SỬA LẠI TÊN ĐÚNG TRONG PHẦN ENROLLMENT CỦA HỌC VIÊN | CRM | Urgent | First Response Sent |
+| 335 | BU DĨ AN-NHỜ HỖ TRỢ FIX LỖI TẠO PHIẾU DROPOUT CHO HV | LMS | High priority | First Response Sent |
+
+## Kết luận
+
+Dữ liệu thật cho thấy các nhóm issue nổi bật là CRM, LMS, TMS, mail/account và một số lỗi liên quan Denise/Ecount/payment. Vì vậy, phần reporting và pattern analysis nên dùng các nhóm này thay vì chỉ dựa trên 6 scenario practice.

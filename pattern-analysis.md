@@ -1,96 +1,85 @@
-# Week 5 - Phân tích Pattern Ticket
+# Pattern Analysis
 
-## 1. Mục tiêu
+## Mục tiêu
 
-Phân tích dữ liệu Week 4 để xác định recurring issues, impact, root cause ban đầu và automation opportunity.
+Mục tiêu của phần này là nhìn vào dữ liệu ticket thật từ Odoo để tìm ra các nhóm vấn đề lặp lại. Em không chỉ nhìn từng ticket riêng lẻ, mà nhóm ticket theo tag, nội dung subject và mức độ ảnh hưởng tới vận hành.
 
-## 2. Tổng quan dữ liệu
+Dataset dùng cho phần này gồm 131 ticket từ `sample.xlsx`.
 
-| Chỉ số | Giá trị |
-|---|---:|
-| Tổng ticket | 6 |
-| Ticket solved | 6 |
-| LMS Technical Issues | 4 |
-| Reporting / Business Requests | 2 |
-| Users affected tối thiểu | 78+ |
+## 1. Pattern tổng quan
 
-## 3. Pattern chính
+Từ dữ liệu export, các nhóm issue nổi bật nhất là:
 
-Pattern lớn nhất là **LMS Technical Issues**, bao gồm:
+| Rank | Pattern | Evidence từ dữ liệu | Nhận xét |
+|---:|---|---|---|
+| 1 | CRM issues | 25 ticket có tag CRM | Nhóm lớn nhất, liên quan lead, enrollment, payment, dropout, gọi điện |
+| 2 | LMS issues | 20 ticket có tag LMS | Liên quan lớp học, học viên, enrollment, Denise/Ecount, tài khoản |
+| 3 | TMS issues | 9 ticket có tag TMS | Liên quan truy cập, công, dữ liệu TMS |
+| 4 | Account / mail / access | 5 ticket mail + 3 ticket tài khoản Denise + các ticket cấp lại tài khoản | Phù hợp để chuẩn hóa checklist và automation một phần |
+| 5 | Bug / system error | 5 ticket có tag Bug, nhiều subject có từ khóa lỗi/fix | Cần escalation hoặc root cause analysis kỹ hơn |
+| 6 | Payment / QR / confirm | Có ticket QR, payment, confirm giao dịch | Cần quy trình kiểm tra rõ giữa CRM/kế toán/hệ thống |
 
-- Login / Account Access
-- Performance
-- Submission Bug
-- Video Playback
+## 2. Pattern lặp lại theo subject
 
-Nhóm này chiếm 66.7% dữ liệu, cho thấy LMS cần được ưu tiên theo dõi trong vận hành.
+Một số subject xuất hiện lặp lại hoặc rất giống nhau:
 
-## 4. Top issues / important patterns
+| Pattern | Số lần thấy trong export | Ví dụ |
+|---|---:|---|
+| Tech test | 3 | Tech test, Fwd: Tech test |
+| Ecount và Denise không thống nhất số lượng đổi quà | 2 | Số lượng giữa 2 hệ thống ECOUNT và DENISE không thống nhất |
+| Sửa tên trong enrollment của học viên | 2 | Nhờ team tech sửa lại tên đúng trong enrollment |
+| Không tạo được phiếu dropout | 2 | BU PXL I không tạo được phiếu dropout |
+| Lỗi enroll / không thể enroll học viên | 2+ | LỖI ENROLL, KHÔNG THỂ ENROLL HỌC VIÊN |
+| CRM không bấm gọi được | 2 | CRM không bấm gọi được |
+| Cấp mail Outlook | 2 | Cấp mail Outlook để làm việc nội bộ |
 
-| Rank | Issue / Pattern | Ticket liên quan | Users affected | Impact | Priority |
-|---:|---|---|---:|---|---|
-| 1 | LMS Technical Issues | 00001, 00002, 00003, 00005 | 78+ | Ảnh hưởng trực tiếp tới học tập/vận hành | High |
-| 2 | Critical Submission Bug | 00003 | 50+ | Không nộp được final exam | Critical |
-| 3 | Performance Issue | 00002 | 15 | Cả lớp bị chậm LMS | High |
-| 4 | Video Playback Issue | 00005 | 12 | Không xem được bài học | High |
-| 5 | Login Issue | 00001 | 1 | Teacher không truy cập được LMS | Medium |
-| 6 | Reporting / Business Request | 00004, 00006 | N/A | Yêu cầu nghiệp vụ/báo cáo | Medium |
+Các pattern này cho thấy nhiều ticket không phải sự cố hoàn toàn mới, mà là các dạng request/lỗi có thể tái diễn.
 
-## 5. Top 3 recurring/problem candidates for root cause analysis
+## 3. Impact analysis
 
-| Rank | Selected Issue | Root cause có thể | Evidence | Recommendation |
-|---:|---|---|---|---|
-| 1 | Login Issue | Account inactive/disabled sau thời gian không hoạt động | Ticket 00001, workflow xử lý rõ ràng | Automate account reactivation sau khi check HR |
-| 2 | Performance Issue | High load, slow API, database query chậm | 15 users affected | Thêm monitoring checklist và alert |
-| 3 | Critical Submission Bug | Lỗi upload/submission validation hoặc backend logic | 50+ users affected | Escalate dev team, có emergency process |
+### Theo priority
 
-## 6. Impact analysis
+| Priority | Count | Ý nghĩa |
+|---|---:|---|
+| Urgent | 40 | Cần phản hồi nhanh, dễ ảnh hưởng trực tiếp tới vận hành |
+| High priority | 42 | Cần ưu tiên theo dõi và xử lý |
+| Medium priority | 9 | Ít hơn đáng kể so với các nhóm khác |
+| Low priority | 40 | Có thể xử lý theo queue bình thường |
 
-| Ticket | Users affected | Business impact | Team time cost estimate |
-|---|---:|---|---|
-| Critical LMS Submission Bug | 50+ | Ảnh hưởng final exam submission | Cao, cần escalation |
-| LMS Performance Issue | 15 | Ảnh hưởng cả lớp | Trung bình/cao |
-| LMS Video Playback Issue | 12 | Ảnh hưởng lesson delivery | Trung bình |
-| LMS Login Issue | 1 | Teacher không truy cập LMS | 5-10 phút/ticket nếu xử lý thủ công |
-| Feature Request | N/A | Product/business improvement | Cần review requirement |
-| Fixed Deadline Request | N/A | Có deadline trước 09:00 | Cần xử lý đúng hạn |
+Điểm đáng chú ý là số lượng ticket `Urgent` và `High priority` rất cao. Nếu không có quy trình phân loại và escalation tốt, team support sẽ dễ bị quá tải.
 
-## 7. Root cause ban đầu
+### Theo hệ thống
 
-| Issue | Root cause có thể | Evidence | Hướng xử lý |
-|---|---|---|---|
-| Login Issue | Account locked/disabled/inactive | User không login được | Check HR, reactivate nếu active |
-| Performance Issue | Load cao, slow DB/API, infrastructure | 15 users bị ảnh hưởng | Azure/App Insights, logs, metrics |
-| Submission Bug | Backend/upload validation lỗi | 50+ users affected | Escalate dev team |
-| Video Playback | CDN/file/permission/network | 12 users affected | Kiểm tra video asset/CDN |
-| Feature Request | Nhu cầu nghiệp vụ mới | Request PDF report | Product review |
-| Fixed Deadline | Báo cáo cần trước mốc giờ | Deadline 09:00 | Time-driven handling |
+CRM và LMS là hai hệ thống cần ưu tiên nhất vì số lượng ticket cao nhất. TMS tuy ít hơn nhưng các ticket TMS thường liên quan trực tiếp tới việc truy cập hệ thống hoặc dữ liệu công, nên vẫn cần checklist riêng.
 
-## 8. Automation opportunity assessment
+## 4. Root cause ban đầu
 
-| Issue | Automation suitability | Lý do |
+| Pattern | Root cause có thể | Hướng xử lý đề xuất |
 |---|---|---|
-| Login Issue | Cao | Logic rõ: detect login, check HR, active thì reactivate, còn lại manual review |
-| Performance Issue | Trung bình | Có thể automate monitoring/alert, nhưng root cause cần điều tra |
-| Critical Submission Bug | Thấp | Impact cao, không nên tự fix bằng automation |
-| Video Playback Issue | Trung bình | Có thể automate health check, fix cần điều tra |
-| Feature Request | Thấp | Cần business/product decision |
-| Fixed Deadline Request | Thấp | Phụ thuộc scope và deadline |
+| CRM / lead / enrollment | Dữ liệu lead/enrollment sai, thao tác nghiệp vụ phức tạp, thiếu validation | Chuẩn hóa checklist, bổ sung KB, xem xét automation cho các thao tác lặp lại |
+| LMS / học viên / lớp học | Đồng bộ dữ liệu giữa LMS, Denise, Ecount hoặc lỗi enrollment | Monitoring đồng bộ dữ liệu, checklist xử lý LMS |
+| Account / mail / access | User thiếu quyền, tài khoản bị khóa, cần cấp lại hoặc kiểm tra trạng thái | Phù hợp automation một phần: check trạng thái user rồi xử lý theo rule |
+| Bug / system error | Lỗi hệ thống hoặc logic nghiệp vụ | Cần escalation dev/infra, không nên auto-fix nếu chưa rõ nguyên nhân |
+| Payment / QR / confirm | Lỗi luồng thanh toán/confirm, dữ liệu giữa kế toán và CRM | Cần quy trình kiểm tra liên phòng ban |
 
-## 9. Selected automation candidate
+## 5. Chọn issue phù hợp để automation
 
-**Selected issue:** Scenario 1 - Login Issue / Account Reactivation
+Dựa trên dữ liệu thật, em vẫn chọn hướng **Login / Account Access Automation** vì nhóm access/account xuất hiện nhiều dạng khác nhau:
 
-Lý do chọn:
+- Cấp lại tài khoản Ecount
+- Cấp mail Outlook
+- Tài khoản Denise học viên không đăng nhập được
+- Không truy cập được TMS
+- Các request liên quan quyền truy cập hoặc tài khoản
 
-- Có khả năng lặp lại trong vận hành thực tế.
-- Manual fix rõ ràng và lặp lại.
-- Có thể nhận diện bằng keyword.
-- Có thể check employee status trước khi hành động.
-- Có boundary an toàn: chỉ reactivate khi employee active.
-- Các case terminated/unknown/error sẽ manual review.
-- Phù hợp Operating Engineer approach.
+Nhóm này phù hợp automation hơn các bug phức tạp vì có thể xử lý theo rule an toàn:
 
-## 10. Kết luận
+1. Đọc ticket và nhận diện account/login/access issue.
+2. Lấy email hoặc thông tin requester.
+3. Check HR/user status.
+4. Nếu user active thì xử lý bước an toàn như reactivate/unlock theo policy.
+5. Nếu terminated/unknown/suspended thì chuyển manual review.
 
-LMS Technical Issues là nhóm nổi bật nhất. Critical Submission Bug có impact cao nhất nhưng cần dev team xử lý. Login Issue là automation candidate tốt nhất vì có workflow rõ ràng, có thể tự động hóa an toàn và giúp giảm workload support.
+## Kết luận
+
+Dữ liệu thật cho thấy các vấn đề nổi bật không chỉ nằm ở LMS mà còn có CRM, TMS, mail/account và các lỗi đồng bộ dữ liệu. Trong đó, nhóm login/account/access là nhóm phù hợp để automation theo Operating Engineer approach vì có thể đặt boundary rõ ràng và giảm thao tác thủ công mà vẫn đảm bảo an toàn.
